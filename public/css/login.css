@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: none;
+    font-family: 'Popins', sans-serif;
+}
+
+.containerAll {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../imagens/FundoLogin.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login{
+    margin-top: 3rem;
+}
+
+.automaster{
+    font-size: 38px;
+    color: #ffffff;
+}
+
+.facalogin{
+    margin-top: 1rem;
+    font-size: 45px;
+    color:#ffffff;
+}
+
+.container {
+    width: 33rem;
+    height: 40rem;
+    background: transparent;
+    border-radius: 15px;
+    border: 2px solid #9B0907;
+    box-shadow: 0 0 8px 4px #9B0907;
+    justify-content: center;
+    backdrop-filter: blur(7px);
+    text-align: center;
+    background-color: #00000094;
+}
+
+.containerInputEmail{
+    margin-top: 2rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerInputSenha{
+    margin-top: 2rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form__group {
+    position: relative;
+    padding: 20px 0 0;
+    width: 100%;
+    max-width: 280px;
+}
+
+.form__field {
+    font-family: inherit;
+    width: 100%;
+    border: none;
+    border-bottom: 4px solid #ffffff;
+    outline: 0;
+    font-size: 26px;
+    color: #fff;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.form__field::placeholder {
+    color: transparent;
+}
+
+.form__field:placeholder-shown~.form__label {
+    font-size: 26px;
+    cursor: text;
+    top: 25px;
+}
+
+.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 26px;
+    color: #ffffff;
+    pointer-events: none;
+}
+
+.form__field:focus {
+    padding-bottom: 8px;
+    font-weight: 700;
+    border-width: 4px;
+    border-image: linear-gradient(to right, #9B0907, #ff5c77);
+    border-image-slice: 1;
+}
+
+.form__field:focus~.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 23px;
+    color: #9B0907;
+    font-weight: 700;
+}
+
+/* reset input */
+.form__field:required,
+.form__field:invalid {
+    box-shadow: none;
+}
+
+.btnLogar {
+    margin-top: 4rem;
+    cursor: pointer;
+    position: relative;
+    padding: 10px 40px;
+    font-size: 28px;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 34px;
+    background-color: transparent;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    overflow: hidden;
+  }
+
+  .btnLogar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 60px;
+    height: 50px;
+    border-radius: inherit;
+    scale: 0;
+    z-index: -1;
+    background-color: #690e0d;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+
+  .btnLogar:hover::before {
+    scale: 3;
+  }
+
+  .btnLogarn:hover {
+    color: #212121;
+    scale: 1.1;
+    box-shadow: 0 0px 20px #ffffff;
+  }
+
+  .btnLogar:active {
+    scale: 1;
+  }
+
