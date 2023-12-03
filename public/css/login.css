@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: none;
-    font-family: 'Popins', sans-serif;
 }
 
 .containerAll {
@@ -15,19 +14,19 @@
     align-items: center;
 }
 
-.login{
-    margin-top: 3rem;
+.login {
+    margin-top: 1rem;
 }
 
-.automaster{
+.automaster {
     font-size: 38px;
     color: #ffffff;
 }
 
-.facalogin{
+.facalogin {
     margin-top: 1rem;
-    font-size: 45px;
-    color:#ffffff;
+    font-size: 40px;
+    color: #ffffff;
 }
 
 .container {
@@ -43,16 +42,7 @@
     background-color: #00000094;
 }
 
-.containerInputEmail{
-    margin-top: 2rem;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.containerInputSenha{
+.containerInput {
     margin-top: 2rem;
     width: 100%;
     height: 100%;
@@ -126,7 +116,7 @@
 }
 
 .btnLogar {
-    margin-top: 4rem;
+    margin-top: 3rem;
     cursor: pointer;
     position: relative;
     padding: 10px 40px;
@@ -138,9 +128,9 @@
     font-weight: 600;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
     overflow: hidden;
-  }
+}
 
-  .btnLogar::before {
+.btnLogar::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -152,19 +142,30 @@
     z-index: -1;
     background-color: #690e0d;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-  }
+}
 
-  .btnLogar:hover::before {
+.btnLogar:hover::before {
     scale: 3;
-  }
+}
 
-  .btnLogarn:hover {
+.btnLogarn:hover {
     color: #212121;
     scale: 1.1;
     box-shadow: 0 0px 20px #ffffff;
-  }
+}
 
-  .btnLogar:active {
+.btnLogar:active {
     scale: 1;
-  }
+}
 
+.esqueceuSenha {
+    margin-top: 2rem;
+    font-size: 20px;
+    color: #ffffff;
+    text-decoration: underline #ffffff;
+}
+
+a{
+    text-decoration: none;
+    color: #ffffff;
+}

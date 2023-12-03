@@ -12,7 +12,18 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
+});
+
+Route::get('/esqueceuSenha', function () {
+    return view('esqueceuSenha');
+});
+
+Route::get('/login', [LoginController::class, 'verificaLogin']);
+
+Route::get('/home', function () {
+    return view('home');
 });
