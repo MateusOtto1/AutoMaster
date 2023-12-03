@@ -18,7 +18,7 @@
                 <h2 class="automaster">AutoMaster</h2>
                 <h1 class="facalogin">Faça seu login</h1>
             </div>
-            <form action="">
+            <form action="/login" method="GET" >
                 <div class="containerInput">
                     <div class="form__group field">
                         <input type="input" name="nome" class="form__field" placeholder="Nome" required="">
@@ -40,7 +40,7 @@
                 <button class="btnLogar">Logar</button>
             </form>
             <div class="esqueceuSenha">
-                <a href="/esqueceuSenha">Esqueceu a senha?</a>
+                <a href="/enviaCodigo">Esqueceu a senha?</a>
             </div>
         </div>
     </div>

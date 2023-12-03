@@ -25,11 +25,11 @@
                         <label for="name" class="form__label">Código</label>
                     </div>
                 </div>
-                <button class="btnLogar">Próximo</button>
+                <button class="btnLogar">Verificar</button>
             </form>
-            <div class="esqueceuSenha">
+            <button class="btnLogar">
                 <a href="/">Voltar</a>
-            </div>
+            </button>
         </div>
     </div>
 </body>
