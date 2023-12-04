@@ -33,7 +33,7 @@
                               Cadastros
                             </a>
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="/telaCadastroCliente">Cadastrar Cliente</a></li>
+                              <li><a class="dropdown-item" href="/cadastro/cliente">Cadastrar Cliente</a></li>
                               <li><a class="dropdown-item" href="/telaCadastroVeiculo">Cadastrar Veículo</a></li>
                               <li><a class="dropdown-item" href="/telaCadastroPeca">Cadastrar Peça</a></li>
                               <li><a class="dropdown-item" href="/telaCadastroMecanico">Cadastrar Mecânico</a></li>
@@ -46,7 +46,9 @@
                             <a class="nav-link" href="/equipes">Gerenciar Equipes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Deslogar</a>
+                            <form action="{{ route('logout') }}" method="GET">
+                                <button class="nav-link">Deslogar</button>
+                            </form>
                         </li>
                     </ul>
                 </div>

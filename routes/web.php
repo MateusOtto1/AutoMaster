@@ -1,22 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClienteController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-use App\Http\Controllers\LoginController;
 
-Route::get('/', function () {
-    return view('login');
-});
+Route::get('/', [AdminController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/', [AdminController::class, 'login']);
+Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 
 Route::get('/enviaCodigo', function () {
     return view('enviaCodigo');
@@ -26,15 +17,13 @@ Route::get('/esqueceuSenha', function () {
     return view('esqueceuSenha');
 });
 
-Route::get('/login', [LoginController::class, 'verificaLogin']);
-
 Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/telaCadastroCliente', function () {
-    return view('cadastroCliente');
-});
+Route::get('/cadastro/cliente', [ClienteController::class, 'index']);
+
+Route::post('/cadastro/cliente', [ClienteController::class, 'store']);
 
 Route::get('/telaCadastroVeiculo', function () {
     return view('cadastroVeiculo');

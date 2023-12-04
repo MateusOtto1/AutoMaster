@@ -18,7 +18,8 @@
                 <h2 class="automaster">AutoMaster</h2>
                 <h1 class="facalogin">Faça seu login</h1>
             </div>
-            <form action="/login" method="GET" >
+            <form method="POST" action="{{ route('admin.login') }}">
+                @csrf
                 <div class="containerInput">
                     <div class="form__group field">
                         <input type="input" name="nome" class="form__field" placeholder="Nome" required="">
@@ -33,7 +34,7 @@
                 </div>
                 <div class="containerInput">
                     <div class="form__group field">
-                        <input type="password" name="senha" class="form__field" placeholder="Senha" required="">
+                        <input type="password" name="password" class="form__field" placeholder="Senha" required="">
                         <label for="name" class="form__label">Senha</label>
                     </div>
                 </div>
