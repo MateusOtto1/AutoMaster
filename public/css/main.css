@@ -8,7 +8,7 @@
     width: 100%;
     position: fixed;
     z-index: 999;
-    box-shadow: 0 0 8px 4px #9B0907;
+    box-shadow: 0 0 8px 4px #000000;
 }
 
 .navbar{
@@ -117,7 +117,7 @@
 .containerTarefasPendentes::-webkit-scrollbar-thumb{
 	border-radius:15px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #9b2323;
+	background-color: #000000;
 }
 
 .containerTarefa{
@@ -278,4 +278,147 @@
 
 .btnCadastrar:active {
     scale: 1;
+}
+
+.alert{
+    margin-top: 1rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+
+/* CadastroVeiculo */
+.containerCadastroVeiculo {
+    width: 33rem;
+    height: 47rem;
+    background: transparent;
+    border-radius: 15px;
+    border: 2px solid #9B0907;
+    box-shadow: 0 0 8px 4px #9B0907;
+    justify-content: center;
+    backdrop-filter: blur(7px);
+    text-align: center;
+    background-color: #00000094;
+}
+
+.containerInputEmailDono{
+    margin-top: 0.5rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Listagens */
+
+.containerListagens{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.listagem{
+    text-align: center;
+    width: 100%;
+    margin-top: 4rem;
+    color: rgb(0, 0, 0);
+}
+
+.containerListagemClientes{
+    margin-top: 1rem;
+    background-image: url(../imagens/FundoCliente.jpg);
+    background-size: cover;
+    width: 95%;
+    height: 80%;
+    align-items: center;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.438);
+}
+
+.containerBg{
+    background-color: #0000005e;
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    overflow-y: scroll;
+    border-radius: 10px;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 0 8px 4px #000000;
+}
+
+.containerBg::-webkit-scrollbar-track{
+	border-radius:15px;
+	background-color: #ffffff;
+}
+
+.containerBg::-webkit-scrollbar{
+    border-radius:15px;
+	width: 6px;
+	background-color: #ffffff;
+}
+
+.containerBg::-webkit-scrollbar-thumb{
+	border-radius:15px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #000000;
+}
+
+.containerClienteAll{
+    margin-top: 1rem;
+    width: 20rem;
+    height: 25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 8px 4px #000000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.containerClienteAll:hover {
+    transform: scale(1.05);
+}
+
+.containerClienteNome{
+
+}
+
+.containerClienteEmail{
+
+}
+
+.containerClienteEndereco{
+
+}
+
+.containerClienteTelefone{
+
+}
+
+.containerClienteEditar{
+
+}
+
+.btnEditar{
+
+}
+
+.containerClienteExcluir{
+
 }

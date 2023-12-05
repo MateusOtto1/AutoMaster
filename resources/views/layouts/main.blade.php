@@ -34,9 +34,21 @@
                             </a>
                             <ul class="dropdown-menu">
                               <li><a class="dropdown-item" href="/cadastro/cliente">Cadastrar Cliente</a></li>
-                              <li><a class="dropdown-item" href="/telaCadastroVeiculo">Cadastrar Veículo</a></li>
-                              <li><a class="dropdown-item" href="/telaCadastroPeca">Cadastrar Peça</a></li>
-                              <li><a class="dropdown-item" href="/telaCadastroMecanico">Cadastrar Mecânico</a></li>
+                              <li><a class="dropdown-item" href="/cadastro/veiculo">Cadastrar Veículo</a></li>
+                              <li><a class="dropdown-item" href="/cadastro/peca">Cadastrar Peça</a></li>
+                              <li><a class="dropdown-item" href="/cadastro/mecanico">Cadastrar Mecânico</a></li>
+                              <li><a class="dropdown-item" href="/cadastro/equipe">Cadastrar Equipe</a></li>
+                            </ul>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Listagens
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="/listar/cliente">Listar Clientes</a></li>
+                              <li><a class="dropdown-item" href="/listar/veiculos">Listar Veículos</a></li>
+                              <li><a class="dropdown-item" href="/listar/pecas">Listar Peças</a></li>
+                              <li><a class="dropdown-item" href="/listar/mecanicos">Listar Mecânicos</a></li>
                             </ul>
                           </li>
                         <li class="nav-item">

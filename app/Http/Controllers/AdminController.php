@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cookie;
 use App\Models\Admin;
 
 class AdminController extends Controller
@@ -23,6 +24,8 @@ class AdminController extends Controller
 
         // Verifica se o usuário existe e a senha está correta
         if ($admin && Hash::check($password, $admin->senha)) {
+            // Autentica o usuário e redireciona para a tela inicial
+            Auth::guard('admin')->login($admin);
             return redirect('/home')->withCookie(cookie('userType', 'admin'));
         }
 
@@ -32,6 +35,7 @@ class AdminController extends Controller
 
     public function logout()
     {
+        Auth::guard('admin')->logout();
         return redirect('/')->withCookie(cookie()->forget('userType'));
     }
 }
