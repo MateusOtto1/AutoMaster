@@ -27,7 +27,9 @@ Route::get('/cadastro/cliente', [ClienteController::class, 'index']);
 Route::post('/cadastro/cliente', [ClienteController::class, 'store']);
 Route::get('/listar/cliente', [ClienteController::class, 'showAll']);
 Route::get('/editar/cliente/{id}', [ClienteController::class, 'show']);
-Route::delete('/deletar/cliente/{id}', [ClienteController::class, 'destroy']);
+Route::delete('/deletar/cliente/{idcliente}', [ClienteController::class, 'destroy']);
+Route::get('/editar/cliente/{idcliente}', [ClienteController::class, 'edit']);
+Route::put('/editar/cliente/{idcliente}', [ClienteController::class, 'update']);
 
 Route::get('/cadastro/veiculo', [VeiculoController::class, 'index']);
 Route::post('/cadastro/veiculo', [VeiculoController::class, 'store']);

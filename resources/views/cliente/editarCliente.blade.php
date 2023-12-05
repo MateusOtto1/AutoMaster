@@ -8,31 +8,32 @@
             </div>
         @endif
         <div class="containerCadastroCliente">
-            <h1 class="cadastro">Cadastro de Cliente</h1>
+            <h1 class="cadastro">Editar Cliente</h1>
             <div class="containerBg">
-                <form action="/cadastro/cliente" method="POST">
+                <form action="/editar/cliente/{{ $cliente->idcliente }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="containerInput">
                         <div class="form__group field">
-                            <input type="input" name="nome" class="form__field" placeholder="Nome" required="">
+                            <input type="input" name="nome" class="form__field" placeholder="Nome" required="" value="{{ $cliente->nome }}">
                             <label for="name" class="form__label">Nome</label>
                         </div>
                     </div>
                     <div class="containerInput">
                         <div class="form__group field">
-                            <input type="email" name="email" class="form__field" placeholder="E-mail" required="">
+                            <input type="email" name="email" class="form__field" placeholder="E-mail" required="" value="{{ $cliente->email }}">
                             <label for="name" class="form__label">E-mail</label>
                         </div>
                     </div>
                     <div class="containerInput">
                         <div class="form__group field">
-                            <input type="text" name="endereco" class="form__field" placeholder="Endereco" required="">
+                            <input type="text" name="endereco" class="form__field" placeholder="Endereco" required="" value="{{ $cliente->endereco }}">
                             <label for="name" class="form__label">Endereco</label>
                         </div>
                     </div>
                     <div class="containerInput">
                         <div class="form__group field">
-                            <input type="number" name="telefone" class="form__field" placeholder="Telefone" required="">
+                            <input type="number" name="telefone" class="form__field" placeholder="Telefone" required="" value="{{ $cliente->telefone}}">
                             <label for="name" class="form__label">Telefone</label>
                         </div>
                     </div>

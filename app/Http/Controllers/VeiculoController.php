@@ -20,23 +20,21 @@ class VeiculoController extends Controller
             'modelo' => 'required|string',
             'cor' => 'required|string',
             'ano' => 'required|date',
-            'placa' => 'required|string|unique:veiculos',
+            'placa' => 'required|string',
         ]);
 
         // Verifica se o e-mail do dono existe entre os clientes
         $cliente = Cliente::where('email', $request->email)->first();
-
         if (!$cliente) {
             // Se o cliente não existir, exibe uma mensagem de erro
-            return redirect('/cadastro/veiculo');
+            return redirect('/cadastro/veiculo')->with('msg', 'Cliente não encontrado!');
         }
 
         // Verifica se a placa do veículo já existe
         $placaExistente = Veiculo::where('placa', $request->placa)->exists();
-
         if ($placaExistente) {
             // Se a placa já existir, exibe uma mensagem de erro
-            return redirect('/cadastro/veiculo');
+            return redirect('/cadastro/veiculo')->with('msg', 'Veículo já cadastrado!');
         }
 
         // Cria um novo veículo
@@ -48,7 +46,7 @@ class VeiculoController extends Controller
         $veiculo->cliente_idcliente = $cliente->idcliente;
         $veiculo->save();
 
-        return redirect('/home');
+        return redirect('/home')->with('msg', 'Veículo cadastrado com sucesso!');
     }
 
     public function showAll()

@@ -1,6 +1,12 @@
 @extends('layouts.main')
 @section('content')
 <div class="containerCadastrosAll">
+    @if (session('msg'))
+            <div class="alert alertVeiculo alert-danger" role="alert">
+                {{ session('msg') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
     <div class="containerCadastroVeiculo">
         <h1 class="cadastro">Cadastro de Veículo</h1>
         <form action="/cadastro/veiculo" method="POST">
