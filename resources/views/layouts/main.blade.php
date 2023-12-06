@@ -46,16 +46,16 @@
                             </a>
                             <ul class="dropdown-menu">
                               <li><a class="dropdown-item" href="/listar/cliente">Listar Clientes</a></li>
-                              <li><a class="dropdown-item" href="/listar/veiculos">Listar Veículos</a></li>
-                              <li><a class="dropdown-item" href="/listar/pecas">Listar Peças</a></li>
-                              <li><a class="dropdown-item" href="/listar/mecanicos">Listar Mecânicos</a></li>
+                              <li><a class="dropdown-item" href="/listar/veiculo">Listar Veículos</a></li>
+                              <li><a class="dropdown-item" href="/listar/peca">Listar Peças</a></li>
+                              <li><a class="dropdown-item" href="/listar/mecanico">Listar Mecânicos</a></li>
                             </ul>
                           </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/ordemServico">Ordem de Serviço</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/equipes">Gerenciar Equipes</a>
+                            <a class="nav-link" href="/listar/equipe">Gerenciar Equipes</a>
                         </li>
                         <li class="nav-item">
                             <form action="{{ route('logout') }}" method="GET">

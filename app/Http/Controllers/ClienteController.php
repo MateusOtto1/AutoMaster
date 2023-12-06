@@ -51,12 +51,6 @@ class ClienteController extends Controller
         return view('cliente.listarCliente', ['clientes' => $clientes]);
     }
 
-    public function show($idcliente)
-    {
-        $cliente = Cliente::find($idcliente);
-        return view('cliente.editarCliente', ['cliente' => $cliente]);
-    }
-
     public function destroy($idcliente)
     {
         $cliente = Cliente::findOrFail($idcliente);
@@ -84,6 +78,12 @@ class ClienteController extends Controller
         ]);
 
         $cliente = Cliente::findOrFail($idcliente);
+
+        // Verifica se o cliente já existe
+        $clienteExistente = Cliente::where('email', $request->email)->where('idcliente', '!=', $idcliente)->first();
+        if ($clienteExistente) {
+            return redirect('/editar/cliente/'.$idcliente)->with('msg', 'Cliente já está cadastrado!');
+        }
 
         $cliente->nome = $request->nome;
         $cliente->endereco = $request->endereco;

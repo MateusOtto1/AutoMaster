@@ -155,19 +155,6 @@
     color: #ffffff;
 }
 
-.containerCadastroCliente {
-    width: 33rem;
-    height: 43rem;
-    background: transparent;
-    border-radius: 15px;
-    border: 2px solid #9B0907;
-    box-shadow: 0 0 8px 4px #9B0907;
-    justify-content: center;
-    backdrop-filter: blur(7px);
-    text-align: center;
-    background-color: #00000094;
-}
-
 .containerInput {
     margin-top: 2rem;
     width: 100%;
@@ -254,6 +241,7 @@
     font-weight: 600;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
     overflow: hidden;
+    margin-bottom: 2rem;
 }
 
 .btnCadastrar::before {
@@ -285,9 +273,8 @@
 }
 
 /* CadastroVeiculo */
-.containerCadastroVeiculo {
+.containerCadastros {
     width: 33rem;
-    height: 47rem;
     background: transparent;
     border-radius: 15px;
     border: 2px solid #9B0907;
@@ -442,3 +429,5 @@
 .containerClienteExcluir{
 
 }
+
+

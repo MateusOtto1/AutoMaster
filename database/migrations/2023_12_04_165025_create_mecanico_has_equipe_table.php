@@ -8,7 +8,7 @@ class CreateMecanicoHasEquipeTable extends Migration
 {
     public function up()
     {
-        Schema::create('mecanico_has_equipes', function (Blueprint $table) {
+        Schema::create('equipe_mecanico', function (Blueprint $table) {
             $table->unsignedBigInteger('mecanico_idmecanico');
             $table->unsignedBigInteger('equipe_idequipe');
             $table->primary(['mecanico_idmecanico', 'equipe_idequipe']);

@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <div class="containerCadastroCliente">
+        <div class="containerCadastros">
             <h1 class="cadastro">Editar Cliente</h1>
             <div class="containerBg">
                 <form action="/editar/cliente/{{ $cliente->idcliente }}" method="POST">
@@ -37,7 +37,7 @@
                             <label for="name" class="form__label">Telefone</label>
                         </div>
                     </div>
-                    <button class="btnCadastrar">Cadastrar</button>
+                    <button class="btnCadastrar">Editar</button>
                 </form>
             </div>
         </div>

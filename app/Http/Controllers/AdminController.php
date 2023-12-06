@@ -30,7 +30,7 @@ class AdminController extends Controller
         }
 
         // Se o login falhar, redirecione de volta com uma mensagem de erro
-        return redirect()->back()->withErrors(['error' => 'Credenciais inválidas']);
+        return redirect('/')->with('msg', 'Credenciais inválidas');
     }
 
     public function logout()

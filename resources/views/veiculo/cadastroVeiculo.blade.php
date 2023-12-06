@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-    <div class="containerCadastroVeiculo">
+    <div class="containerCadastros">
         <h1 class="cadastro">Cadastro de Veículo</h1>
         <form action="/cadastro/veiculo" method="POST">
             @csrf

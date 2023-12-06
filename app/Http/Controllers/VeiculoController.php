@@ -52,13 +52,58 @@ class VeiculoController extends Controller
     public function showAll()
     {
         $veiculos = Veiculo::all();
-        return view('veiculo.listarVeiculos', ['veiculos' => $veiculos]);
+        $clientes = Cliente::whereIn('idcliente', $veiculos->pluck('cliente_idcliente'))->get();
+        return view('veiculo.listarVeiculo', ['veiculos' => $veiculos, 'clientes' => $clientes]);
     }
 
-    public function show($id)
+    public function destroy($idveiculo)
     {
-        $veiculo = Veiculo::find($id);
-        return view('veiculo.editarVeiculo', ['veiculo' => $veiculo]);
+        $veiculo = Veiculo::findOrFail($idveiculo);
+        $veiculo->delete();
+        return redirect('/listar/veiculo')->with('msg', 'Veículo excluído com sucesso!');
+    }
+
+    public function edit($idveiculo)
+    {
+        $veiculo = Veiculo::findOrFail($idveiculo);
+        $cliente = Cliente::findOrFail($veiculo->cliente_idcliente);
+        return view('veiculo.editarVeiculo', ['veiculo' => $veiculo, 'cliente' => $cliente]);
+    }
+
+    public function update(Request $request, $idveiculo)
+    {
+        $request->validate([
+            'modelo' => 'required|string',
+            'cor' => 'required|string',
+            'ano' => 'required|date',
+            'placa' => 'required|string',
+            'email' => 'required|email',
+        ]);
+
+        $veiculo = Veiculo::findOrFail($idveiculo);
+
+        // Verifica se o e-mail do dono existe entre os clientes
+        $cliente = Cliente::where('email', $request->email)->first();
+        if (!$cliente) {
+            // Se o cliente não existir, exibe uma mensagem de erro
+            return redirect('/editar/veiculo/'.$idveiculo)->with('msg', 'Cliente não encontrado!');
+        }
+
+        // Verifica se a placa do veículo já existe
+        $placaExistente = Veiculo::where('placa', $request->placa)->where('idveiculo', '!=', $idveiculo)->first();
+        if ($placaExistente) {
+            // Se a placa já existir, exibe uma mensagem de erro
+            return redirect('/editar/veiculo/'.$idveiculo)->with('msg', 'Veículo já cadastrado!');
+        }
+
+        $veiculo->modelo = $request->modelo;
+        $veiculo->cor = $request->cor;
+        $veiculo->ano = $request->ano;
+        $veiculo->placa = $request->placa;
+        $veiculo->cliente_idcliente = $cliente->idcliente;
+        $veiculo->save();
+
+        return redirect('/listar/veiculo')->with('msg', 'Veículo atualizado com sucesso!');
     }
 }
 
