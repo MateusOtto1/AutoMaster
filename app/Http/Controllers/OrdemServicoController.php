@@ -60,6 +60,14 @@ class OrdemServicoController extends Controller
         $ordemServico->cliente_idcliente = $cliente->idcliente;
         $ordemServico->veiculo_idveiculo = $veiculo->idveiculo;
         $ordemServico->equipe_idequipe = $equipe->idequipe;
+        // Calcula o valor total da ordem de serviço
+        $valorTotal = $ordemServico->valor;
+        $pecas = Peca::whereIn('idpeca', $pecasSelecionadas)->get();
+        foreach ($pecas as $peca) {
+            $valorTotal += $peca->preco;
+        }
+        $ordemServico->valor = $valorTotal;
+
         $ordemServico->save();
 
         // Adiciona as peças à ordem de serviço
@@ -73,7 +81,37 @@ class OrdemServicoController extends Controller
         $cliente = Cliente::whereIn('idcliente', $ordensServico->pluck('cliente_idcliente'))->get(['email'])->implode('email', ', ');
         $veiculo = Veiculo::whereIn('idveiculo', $ordensServico->pluck('veiculo_idveiculo'))->get(['placa'])->implode('placa', ', ');
         $equipe = Equipe::whereIn('idequipe', $ordensServico->pluck('equipe_idequipe'))->get(['nome'])->implode('nome', ', ');
+
+        foreach ($ordensServico as $ordemServico) {
+            $pecas = $ordemServico->pecas;
+            $valorTotalPecas = 0;
+            foreach ($pecas as $peca) {
+                $valorTotalPecas += $peca->preco;
+            }
+            $ordemServico->valorTotalPecas = $valorTotalPecas;
+        }
+
         return view('home', ['ordensServico' => $ordensServico, 'cliente' => $cliente, 'veiculo' => $veiculo, 'equipe' => $equipe]);
+    }
+
+
+    public function show()
+    {
+        $ordensServico = OrdemServico::all();
+        $cliente = Cliente::whereIn('idcliente', $ordensServico->pluck('cliente_idcliente'))->get(['email'])->implode('email', ', ');
+        $veiculo = Veiculo::whereIn('idveiculo', $ordensServico->pluck('veiculo_idveiculo'))->get(['placa'])->implode('placa', ', ');
+        $equipe = Equipe::whereIn('idequipe', $ordensServico->pluck('equipe_idequipe'))->get(['nome'])->implode('nome', ', ');
+
+        foreach ($ordensServico as $ordemServico) {
+            $pecas = $ordemServico->pecas;
+            $valorTotalPecas = 0;
+            foreach ($pecas as $peca) {
+                $valorTotalPecas += $peca->preco;
+            }
+            $ordemServico->valorTotalPecas = $valorTotalPecas;
+        }
+
+        return view('ordemServico.listarOrdemServico', ['ordensServico' => $ordensServico, 'cliente' => $cliente, 'veiculo' => $veiculo, 'equipe' => $equipe]);
     }
 
     public function destroy($idordem_servico)
@@ -95,7 +133,15 @@ class OrdemServicoController extends Controller
         $cliente = Cliente::whereIn('idcliente', $ordemServico->pluck('cliente_idcliente'))->get(['email'])->implode('email', ', ');
         $veiculo = Veiculo::whereIn('idveiculo', $ordemServico->pluck('veiculo_idveiculo'))->get(['placa'])->implode('placa', ', ');
         $equipe = Equipe::whereIn('idequipe', $ordemServico->pluck('equipe_idequipe'))->get(['nome'])->implode('nome', ', ');
-        return view('ordemServico.editarOrdemServico', ['ordemServico' => $ordemServico, 'pecas' => $pecas, 'ordemServicoPecas' => $ordemServicoPecas, 'cliente' => $cliente, 'veiculo' => $veiculo, 'equipe' => $equipe]);
+
+        // Calcula o valor total das peças na ordem de serviço
+        $valorTotalPecas = 0;
+        foreach ($ordemServicoPecas as $ordemServicoPeca) {
+            $valorTotalPecas += $ordemServicoPeca->preco;
+        }
+        $valorTotalOrdemServico = $ordemServico->valor - $valorTotalPecas;
+
+        return view('ordemServico.editarOrdemServico', ['ordemServico' => $ordemServico, 'pecas' => $pecas, 'ordemServicoPecas' => $ordemServicoPecas, 'cliente' => $cliente, 'veiculo' => $veiculo, 'equipe' => $equipe, 'valorTotalOrdemServico' => $valorTotalOrdemServico]);
     }
 
     public function update(Request $request, $idordem_servico)
@@ -133,7 +179,14 @@ class OrdemServicoController extends Controller
 
         $pecasSelecionadas = $request->input('peca', []);
 
-        $ordemServico->valor = $request->valor;
+        // Obter o valor das peças selecionadas
+        $valorTotalPecas = 0;
+        $pecas = Peca::whereIn('idpeca', $pecasSelecionadas)->get();
+        foreach ($pecas as $peca) {
+            $valorTotalPecas += $peca->preco;
+        }
+
+        $ordemServico->valor = $request->valor + $valorTotalPecas;
         $ordemServico->descricao = $request->descricao;
         $ordemServico->data_emissao = $request->data_emissao;
         $ordemServico->data_conclusao = $request->data_conclusao;
@@ -147,6 +200,6 @@ class OrdemServicoController extends Controller
         $ordemServico->pecas()->detach();
         $ordemServico->pecas()->attach($pecasSelecionadas);
 
-        return redirect('/home')->with('msg', 'Ordem de serviço atualizada com sucesso!');
+        return redirect('/listar/servico')->with('msg', 'Ordem de serviço atualizada com sucesso!');
     }
 }

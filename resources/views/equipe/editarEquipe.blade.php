@@ -19,14 +19,19 @@
                             <label for="name" class="form__label">Nome da Equipe</label>
                         </div>
                     </div>
-                    @foreach($mecanicos as $mecanico)
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="mecanico[]" value="{{ $mecanico->idmecanico }}" {{ in_array($mecanico->idmecanico, $equipe->mecanicos->pluck('idmecanico')->toArray()) ? 'checked' : '' }}>
-                            <label class="form-check-label" for="mecanico{{ $mecanico->idpeca }}">
-                                {{ $mecanico->nome }}
-                            </label>
+                    <div class="containerFlexCheck">
+                        <h2 class="pecas">Mecânicos</h2>
+                        <div class="containerCheck">
+                            @foreach ($mecanicos as $mecanico)
+                                <div class="containerEnvolveCheck">
+                                    <label class="cyberpunk-checkbox-label" for="mecanico{{ $mecanico->idmecanico }}">
+                                        <input type="checkbox" class="cyberpunk-checkbox" name="mecanico[]" value="{{ $mecanico->idmecanico }}" {{ in_array($mecanico->idmecanico, $equipe->mecanicos->pluck('idmecanico')->toArray()) ? 'checked' : '' }}>
+                                        {{ $mecanico->nome }}
+                                    </label>
+                                </div>
+                            @endforeach
                         </div>
-                    @endforeach
+                    </div>
                     <button class="btnCadastrar">Editar</button>
                 </form>
             </div>

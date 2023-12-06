@@ -9,14 +9,19 @@ use App\Http\Controllers\MecanicoController;
 use App\Http\Controllers\EquipeController;
 use App\Http\Controllers\OrdemServicoController;
 
+
 Route::get('/', [AdminController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/', [AdminController::class, 'login']);
+Route::get('/envia/codigo', [AdminController::class, 'show']);
+Route::put('/envia/codigo', [AdminController::class, 'sendCode']);
+Route::get('/verifica/codigo', [AdminController::class, 'showCodeForm']);
+Route::post('/verifica/codigo', [AdminController::class, 'verifyCode']);
+Route::get('/altera/senha/{codigo}', [AdminController::class, 'showPasswordForm']);
+Route::put('/altera/senha/{codigo}', [AdminController::class, 'changePassword']);
 
 Route::middleware(['admin.auth'])->group(function () {
 
 Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
-Route::get('/enviaCodigo', function () { return view('enviaCodigo'); });
-Route::get('/esqueceuSenha', function () { return view('esqueceuSenha'); });
 
 Route::get('/cadastro/cliente', [ClienteController::class, 'index']);
 Route::post('/cadastro/cliente', [ClienteController::class, 'store']);
@@ -56,6 +61,7 @@ Route::put('/editar/equipe/{idequipe}', [EquipeController::class, 'update']);
 Route::get('/cadastro/servico', [OrdemServicoController::class, 'index']);
 Route::post('/cadastro/servico', [OrdemServicoController::class, 'store']);
 Route::get('/home', [OrdemServicoController::class, 'showAll']);
+Route::get('/listar/servico', [OrdemServicoController::class, 'show']);
 Route::delete('/deletar/servico/{idordemServico}', [OrdemServicoController::class, 'destroy']);
 Route::get('/editar/servico/{idordemServico}', [OrdemServicoController::class, 'edit']);
 Route::put('/editar/servico/{idordemServico}', [OrdemServicoController::class, 'update']);

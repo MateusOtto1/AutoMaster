@@ -3,7 +3,7 @@
 <div class="containerHomeAll">
     <div class="containerInfoAll">
         <div class="containerTarefas">
-            <h1 class="tarefas">Aqui estão todos os clientes cadastrados</h1>
+            <h1 class="tarefas">Aqui estão todas as ordens de serviço</h1>
             @if (session('msg'))
                 <div class="alertLista" style="display: block;">
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -21,31 +21,48 @@
             </script>
         </div>
         <div class="containerServicos">
-            @if ($clientes->isEmpty())
+            @if ($ordensServico->isEmpty())
                 <div class="containerTarefas">
-                    <h1 class="tarefas">Não há clientes cadastrados</h1>
+                    <h1 class="tarefas">Não há ordens de servico</h1>
                 </div>
             @endif
-            @foreach ($clientes as $cliente)
+            @foreach ($ordensServico as $ordemServico)
                 <div class="containerServicoInfo">
                     <div class="containerInfo">
-                        <h1 class="infoServico">Nome: <p class="info">{{ $cliente->nome }}</p>
+                        <h1 class="infoServico">Serviço: <p class="info">{{ $ordemServico->idordem_servico }}</p>
                         </h1>
                     </div>
                     <div class="containerInfo">
-                        <h1 class="infoServico">E-mail: <p class="info">{{ $cliente->email }}</p>
+                        <h1 class="infoServico">Descrição: <p class="info">{{ $ordemServico->descricao }}</p>
                         </h1>
                     </div>
                     <div class="containerInfo">
-                        <h1 class="infoServico">Telefone: <p class="info">{{ $cliente->telefone }}</p>
+                        <h1 class="infoServico">Veículo: <p class="info">{{ $veiculo }}</p>
                         </h1>
                     </div>
                     <div class="containerInfo">
-                        <h1 class="infoServico">Endereço: <p class="info">{{ $cliente->endereco }}</p>
+                        <h1 class="infoServico">Cliente: <p class="info">{{ $cliente }}</p>
+                        </h1>
+                    </div>
+                    <div class="containerInfo">
+                        <h1 class="infoServico">Equipe: <p class="info">{{ $equipe }}</p>
+                        </h1>
+                    </div>
+                    <div class="containerInfo">
+                        <h1 class="infoServico">Data de Emissão: <p class="info">{{ $ordemServico->data_emissao }}</p>
+                        </h1>
+                    </div>
+                    <div class="containerInfo">
+                        <h1 class="infoServico">Data de Conclusão: <p class="info">{{ $ordemServico->data_conclusao }}
+                            </p>
+                        </h1>
+                    </div>
+                    <div class="containerInfo">
+                        <h1 class="infoServico">Valor Total: <p class="info">{{ $ordemServico->valor }}</p>
                         </h1>
                     </div>
                     <div class="containerBtn">
-                        <form action="/editar/cliente/{{ $cliente->idcliente }}" method="GET">
+                        <form action="/editar/servico/{{ $ordemServico->idordem_servico }}" method="GET">
                             <button class="btnEditar">
                                 <span>Editar</span>
                                 <span>
@@ -57,7 +74,7 @@
                                 </span>
                             </button>
                         </form>
-                        <form action="/deletar/cliente/{{ $cliente->idcliente }}" method="POST">
+                        <form action="/deletar/servico/{{ $ordemServico->idordem_servico }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button class="btnDeletar">

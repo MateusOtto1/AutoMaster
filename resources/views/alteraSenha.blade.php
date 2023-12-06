@@ -25,33 +25,28 @@
         <div class="containerLogin">
             <div class="login">
                 <h2 class="automaster">AutoMaster</h2>
-                <h1 class="facalogin">Faça seu login</h1>
+                <h1 class="facalogin">Alterar senha</h1>
             </div>
-            <form method="POST" action="{{ route('admin.login') }}">
+            <form action="/altera/senha/{codigo}" method="POST" >
                 @csrf
-                <div class="containerInput">
-                    <div class="form__group field">
-                        <input type="input" name="nome" class="form__field" placeholder="Nome" required="">
-                        <label for="name" class="form__label">Nome</label>
-                    </div>
-                </div>
-                <div class="containerInput">
-                    <div class="form__group field">
-                        <input type="email" name="email" class="form__field" placeholder="E-mail" required="">
-                        <label for="name" class="form__label">E-mail</label>
-                    </div>
-                </div>
+                @method('PUT')
                 <div class="containerInput">
                     <div class="form__group field">
                         <input type="password" name="password" class="form__field" placeholder="Senha" required="">
                         <label for="name" class="form__label">Senha</label>
                     </div>
                 </div>
-                <button class="btn-Logar">Logar</button>
+                <div class="containerInput">
+                    <div class="form__group field">
+                        <input type="password" name="confirmacao" class="form__field" placeholder="Confirmação da Senha" required="">
+                        <label for="name" class="form__label">Confirmação da Senha</label>
+                    </div>
+                </div>
+                <button class="btn-Logar">Alterar</button>
             </form>
-            <div class="esqueceu-Senha">
-                <a href="/envia/codigo">Esqueceu a senha?</a>
-            </div>
+            <button class="btnLogar">
+                <a href="/">Voltar</a>
+            </button>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

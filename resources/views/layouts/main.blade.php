@@ -49,6 +49,7 @@
                               <li><a class="dropdown-item" href="/listar/veiculo">Listar Veículos</a></li>
                               <li><a class="dropdown-item" href="/listar/peca">Listar Peças</a></li>
                               <li><a class="dropdown-item" href="/listar/mecanico">Listar Mecânicos</a></li>
+                              <li><a class="dropdown-item" href="/listar/servico">Listar Serviços</a></li>
                             </ul>
                           </li>
                         <li class="nav-item">
