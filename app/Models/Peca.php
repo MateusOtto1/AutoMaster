@@ -17,4 +17,9 @@ class Peca extends Model
     protected $table = 'pecas';
 
     protected $primaryKey = 'idpeca';
+
+    public function servicos()
+    {
+        return $this->belongsToMany('App\Models\OrdemServico');
+    }
 }

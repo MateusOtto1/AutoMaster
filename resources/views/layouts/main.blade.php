@@ -52,7 +52,7 @@
                             </ul>
                           </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/ordemServico">Ordem de Serviço</a>
+                            <a class="nav-link" href="/cadastro/servico">Ordem de Serviço</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/listar/equipe">Gerenciar Equipes</a>

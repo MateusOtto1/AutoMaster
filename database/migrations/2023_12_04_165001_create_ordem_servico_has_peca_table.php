@@ -8,7 +8,7 @@ class CreateOrdemServicoHasPecaTable extends Migration
 {
     public function up()
     {
-        Schema::create('ordem_servico_has_pecas', function (Blueprint $table) {
+        Schema::create('ordem_servico_peca', function (Blueprint $table) {
             $table->unsignedBigInteger('ordem_servico_idordem_servico');
             $table->unsignedBigInteger('peca_idpeca');
             $table->primary(['ordem_servico_idordem_servico', 'peca_idpeca']);

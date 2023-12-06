@@ -15,15 +15,8 @@ Route::post('/', [AdminController::class, 'login']);
 Route::middleware(['admin.auth'])->group(function () {
 
 Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
-Route::get('/enviaCodigo', function () {
-    return view('enviaCodigo');
-});
-Route::get('/esqueceuSenha', function () {
-    return view('esqueceuSenha');
-});
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/enviaCodigo', function () { return view('enviaCodigo'); });
+Route::get('/esqueceuSenha', function () { return view('esqueceuSenha'); });
 
 Route::get('/cadastro/cliente', [ClienteController::class, 'index']);
 Route::post('/cadastro/cliente', [ClienteController::class, 'store']);
@@ -59,5 +52,12 @@ Route::get('/listar/equipe', [EquipeController::class, 'showAll']);
 Route::delete('/deletar/equipe/{idequipe}', [EquipeController::class, 'destroy']);
 Route::get('/editar/equipe/{idequipe}', [EquipeController::class, 'edit']);
 Route::put('/editar/equipe/{idequipe}', [EquipeController::class, 'update']);
+
+Route::get('/cadastro/servico', [OrdemServicoController::class, 'index']);
+Route::post('/cadastro/servico', [OrdemServicoController::class, 'store']);
+Route::get('/home', [OrdemServicoController::class, 'showAll']);
+Route::delete('/deletar/servico/{idordemServico}', [OrdemServicoController::class, 'destroy']);
+Route::get('/editar/servico/{idordemServico}', [OrdemServicoController::class, 'edit']);
+Route::put('/editar/servico/{idordemServico}', [OrdemServicoController::class, 'update']);
 
 });

@@ -22,7 +22,7 @@
                     @foreach($mecanicos as $mecanico)
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="mecanico[]" value="{{ $mecanico->idmecanico }}" {{ in_array($mecanico->idmecanico, $equipe->mecanicos->pluck('idmecanico')->toArray()) ? 'checked' : '' }}>
-                            <label class="form-check-label" for="mecanico{{ $mecanico->id }}">
+                            <label class="form-check-label" for="mecanico{{ $mecanico->idpeca }}">
                                 {{ $mecanico->nome }}
                             </label>
                         </div>
