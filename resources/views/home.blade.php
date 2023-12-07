@@ -89,6 +89,15 @@
                                 </button>
                             </form>
                         </div>
+                        @if ($ordemServico->status == 0)
+                            <div class="containerBtn">
+                                <form action="/concluir/servico/{{ $ordemServico->idordem_servico }}" method="GET">
+                                    <button class="btnConcluir">
+                                        <span>Concluir Serviço</span>
+                                    </button>
+                                </form>
+                            </div>
+                        @endif
                     </div>
                 @endforeach
             </div>

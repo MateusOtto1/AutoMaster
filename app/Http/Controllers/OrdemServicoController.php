@@ -185,12 +185,16 @@ class OrdemServicoController extends Controller
         foreach ($pecas as $peca) {
             $valorTotalPecas += $peca->preco;
         }
+        if ($request->status == 1) {
+            $ordemServico->status = 1;
+        } else {
+            $ordemServico->status = 0;
+        }
 
         $ordemServico->valor = $request->valor + $valorTotalPecas;
         $ordemServico->descricao = $request->descricao;
         $ordemServico->data_emissao = $request->data_emissao;
         $ordemServico->data_conclusao = $request->data_conclusao;
-        $ordemServico->status = 0;
         $ordemServico->cliente_idcliente = $cliente->idcliente;
         $ordemServico->veiculo_idveiculo = $veiculo->idveiculo;
         $ordemServico->equipe_idequipe = $equipe->idequipe;
@@ -201,5 +205,13 @@ class OrdemServicoController extends Controller
         $ordemServico->pecas()->attach($pecasSelecionadas);
 
         return redirect('/listar/servico')->with('msg', 'Ordem de serviço atualizada com sucesso!');
+    }
+
+    public function concluir($idordem_servico)
+    {
+        $ordemServico = OrdemServico::findOrFail($idordem_servico);
+        $ordemServico->status = 1;
+        $ordemServico->save();
+        return redirect('/listar/servico')->with('msg', 'Ordem de serviço concluída com sucesso!');
     }
 }

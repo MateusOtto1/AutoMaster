@@ -65,5 +65,6 @@ Route::get('/listar/servico', [OrdemServicoController::class, 'show']);
 Route::delete('/deletar/servico/{idordemServico}', [OrdemServicoController::class, 'destroy']);
 Route::get('/editar/servico/{idordemServico}', [OrdemServicoController::class, 'edit']);
 Route::put('/editar/servico/{idordemServico}', [OrdemServicoController::class, 'update']);
+Route::get('/concluir/servico/{idordemServico}', [OrdemServicoController::class, 'concluir']);
 
 });

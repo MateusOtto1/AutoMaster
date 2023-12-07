@@ -3,7 +3,7 @@
     <div class="containerCadastrosAll">
         <div class="containerCadastroServico">
             @if (session('msg'))
-                <div class="alert alertVeiculo alert-danger" role="alert">
+                <div class="alert alert-danger" role="alert">
                     {{ session('msg') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
@@ -73,6 +73,17 @@
                                 </label>
                             </div>
                         @endforeach
+                    </div>
+                </div>
+                <div class="containerFlexCheck">
+                    <h2 class="pecas">Concluir Serviço</h2>
+                    <div class="containerCheck">
+                        <div class="containerEnvolveCheck">
+                            <label class="cyberpunk-checkbox-label" for="concluirTarefa">
+                                <input type="checkbox" class="cyberpunk-checkbox" name="status" value="1" {{ $ordemServico->status == 1 ? 'checked' : '' }}>
+                                Concluir
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="containerInput">
