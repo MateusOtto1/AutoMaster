@@ -5,6 +5,60 @@
     font-family: 'Roboto', sans-serif;
 }
 
+#loading {
+    margin-top: 5rem;
+    color: #ffffff;
+    display: none;
+}
+
+.containerSpinnerAll{
+    width:100%;
+    display: none;
+}
+
+.containerSpinner{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    width: 70px;
+    height: 70px;
+    display: grid;
+    border: 4.5px solid #0000;
+    border-radius: 50%;
+    border-color: #dbdcef #0000;
+    animation: spinner-e04l1k 1s infinite linear;
+}
+
+.spinner::before,
+.spinner::after {
+    content: "";
+    grid-area: 1/1;
+    margin: 2.2px;
+    border: inherit;
+    border-radius: 50%;
+}
+
+.spinner::before {
+    border-color: red #0000;
+    animation: inherit;
+    animation-duration: 0.5s;
+    animation-direction: reverse;
+}
+
+.spinner::after {
+    margin: 8.9px;
+}
+
+@keyframes spinner-e04l1k {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
 .containerAll {
     width: 100%;
     height: 100vh;
@@ -117,7 +171,7 @@
     box-shadow: none;
 }
 
-.btn-Logar{
+.btn-Logar {
     margin-top: 3rem !important;
     cursor: pointer !important;
     position: relative !important;
@@ -160,18 +214,18 @@
     scale: 1 !important;
 }
 
-.esqueceu-Senha{
+.esqueceu-Senha {
     margin-top: 2rem !important;
     font-size: 20px !important;
     color: #ffffff !important;
     text-decoration: underline #ffffff !important;
 }
 
-a{
+a {
     text-decoration: none !important;
     color: #ffffff !important;
 }
 
-.enviaCodigo{
+.enviaCodigo {
     margin-top: 5rem !important;
 }

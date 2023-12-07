@@ -43,6 +43,10 @@ class OrdemServicoController extends Controller
             return redirect('/cadastro/servico')->with('msg', 'Veículo não encontrado!');
         }
 
+        if($veiculo->cliente_idcliente != $cliente->idcliente){
+            return redirect('/cadastro/servico')->with('msg', 'Veículo não pertence ao cliente!');
+        }
+
         // Verifica se a equipe existe
         $equipe = Equipe::where('nome', $request->nome_equipe)->first();
         if (!$equipe) {
@@ -78,9 +82,9 @@ class OrdemServicoController extends Controller
     public function showAll()
     {
         $ordensServico = OrdemServico::all();
-        $cliente = Cliente::whereIn('idcliente', $ordensServico->pluck('cliente_idcliente'))->get(['email'])->implode('email', ', ');
-        $veiculo = Veiculo::whereIn('idveiculo', $ordensServico->pluck('veiculo_idveiculo'))->get(['placa'])->implode('placa', ', ');
-        $equipe = Equipe::whereIn('idequipe', $ordensServico->pluck('equipe_idequipe'))->get(['nome'])->implode('nome', ', ');
+        $clientes = Cliente::all();
+        $veiculos = Veiculo::all();
+        $equipes = Equipe::all();
 
         foreach ($ordensServico as $ordemServico) {
             $pecas = $ordemServico->pecas;
@@ -91,16 +95,16 @@ class OrdemServicoController extends Controller
             $ordemServico->valorTotalPecas = $valorTotalPecas;
         }
 
-        return view('home', ['ordensServico' => $ordensServico, 'cliente' => $cliente, 'veiculo' => $veiculo, 'equipe' => $equipe]);
+        return view('home', ['ordensServico' => $ordensServico, 'clientes' => $clientes, 'veiculos' => $veiculos, 'equipes' => $equipes]);
     }
 
 
     public function show()
     {
         $ordensServico = OrdemServico::all();
-        $cliente = Cliente::whereIn('idcliente', $ordensServico->pluck('cliente_idcliente'))->get(['email'])->implode('email', ', ');
-        $veiculo = Veiculo::whereIn('idveiculo', $ordensServico->pluck('veiculo_idveiculo'))->get(['placa'])->implode('placa', ', ');
-        $equipe = Equipe::whereIn('idequipe', $ordensServico->pluck('equipe_idequipe'))->get(['nome'])->implode('nome', ', ');
+        $clientes = Cliente::all();
+        $veiculos = Veiculo::all();
+        $equipes= Equipe::all();
 
         foreach ($ordensServico as $ordemServico) {
             $pecas = $ordemServico->pecas;
@@ -111,7 +115,7 @@ class OrdemServicoController extends Controller
             $ordemServico->valorTotalPecas = $valorTotalPecas;
         }
 
-        return view('ordemServico.listarOrdemServico', ['ordensServico' => $ordensServico, 'cliente' => $cliente, 'veiculo' => $veiculo, 'equipe' => $equipe]);
+        return view('ordemServico.listarOrdemServico', ['ordensServico' => $ordensServico, 'clientes' => $clientes, 'veiculos' => $veiculos, 'equipes' => $equipes]);
     }
 
     public function destroy($idordem_servico)
@@ -169,6 +173,10 @@ class OrdemServicoController extends Controller
         $veiculo = Veiculo::where('placa', $request->placa)->first();
         if (!$veiculo) {
             return redirect('/editar/servico/' . $idordem_servico)->with('msg', 'Veículo não encontrado!');
+        }
+
+        if($veiculo->cliente_idcliente != $cliente->idcliente){
+            return redirect('/cadastro/servico')->with('msg', 'Veículo não pertence ao cliente!');
         }
 
         // Verifica se a equipe existe

@@ -19,6 +19,14 @@
                         document.querySelector('.alertLista').style.display = 'none';
                     }
                 </script>
+                <div class="containerLoading">
+                    <h1 id="loadingListar">Carregando</h1>
+                    <div class="containerSpinnerAll">
+                        <div class="containerSpinnerListar">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="containerServicos">
                 @if ($equipes->isEmpty())
@@ -34,7 +42,7 @@
                         </div>
                         <div class="containerBtn">
                             <form action="/editar/equipe/{{ $equipe->idequipe }}" method="GET">
-                                <button class="btnEditar">
+                                <button class="btnEditar" onclick="carregar()">
                                     <span>Editar</span>
                                     <span>
                                         <svg class="edit-svgIcon" viewBox="0 0 512 512">
@@ -48,7 +56,7 @@
                             <form action="/deletar/equipe/{{ $equipe->idequipe }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btnDeletar">
+                                <button class="btnDeletar" onclick="carregar()">
                                     <span>Deletar</span>
                                     <span>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-miterlimit="2"
@@ -66,4 +74,21 @@
             </div>
         </div>
     </div>
+    <script>
+        function carregar() {
+            // Exibe o elemento de carregamento
+            document.getElementById('loadingListar').style.display = 'block';
+            document.querySelector('.containerSpinnerAll').style.display = 'block';
+            document.querySelector('.containerLoading').style.display = 'flex';
+            // Execute aqui suas operações assíncronas ou o que desejar
+
+            // Simulando uma operação assíncrona com setTimeout
+            setTimeout(function() {
+                // Oculta o elemento de carregamento após um tempo
+                document.getElementById('loadingListar').style.display = 'none';
+                document.querySelector('.containerSpinnerAll').style.display = 'none';
+                document.querySelector('.containerLoading').style.display = 'none';
+            }, 10000); // Tempo em milissegundos, ajuste conforme necessário
+        }
+    </script>
 @endsection
