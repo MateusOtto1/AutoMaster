@@ -84,7 +84,7 @@
                 document.getElementById('loading').style.display = 'none';
                 document.querySelector('.containerSpinnerAll').style.display = 'none';
                 document.querySelector('.someAll').style.display = 'flex';
-            }, 3000); // Tempo em milissegundos, ajuste conforme necessário
+            }, 10000); // Tempo em milissegundos, ajuste conforme necessário
         }
     </script>
 </body>

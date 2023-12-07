@@ -40,6 +40,16 @@
                             <h1 class="infoServico">Nome da Equipe: <p class="info">{{ $equipe->nome }}</p>
                             </h1>
                         </div>
+                        <div class="containerFlexCheck">
+                            <div class="containerCheck">
+                                @foreach ($equipe->nomesMecanicos() as $nomeMecanico)
+                                    <div class="containerInfo">
+                                        <h1 class="infoServico">Nome do Mecânico: <p class="info">{{ $nomeMecanico }}</p>
+                                        </h1>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
                         <div class="containerBtn">
                             <form action="/editar/equipe/{{ $equipe->idequipe }}" method="GET">
                                 <button class="btnEditar" onclick="carregar()">

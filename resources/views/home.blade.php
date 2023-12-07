@@ -31,7 +31,9 @@
             </div>
             <div class="containerServicos">
                 @if ($ordensServico->isEmpty())
-                    <h1 class="listagem2">Não há serviços cadastrados</h1>
+                    <div class="containerTarefas">
+                        <h1 class="tarefas">Não há serviços cadastrados</h1>
+                    </div>
                 @endif
                 @foreach ($ordensServico as $ordemServico)
                     <div class="containerServicoInfo">

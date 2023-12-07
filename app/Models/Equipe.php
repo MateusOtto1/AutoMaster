@@ -21,4 +21,9 @@ class Equipe extends Model
     {
     return $this->belongsToMany('App\Models\Mecanico');
     }
+
+    public function nomesMecanicos()
+    {
+        return $this->mecanicos->pluck('nome')->toArray();
+    }
 }
