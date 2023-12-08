@@ -772,6 +772,14 @@
     flex-direction: column;
 }
 
+.containerFlexCheckEquipeLista{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+
 .pecas {
     font-size: 28px;
     color: #ffffff;

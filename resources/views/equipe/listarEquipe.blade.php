@@ -40,7 +40,8 @@
                             <h1 class="infoServico">Nome da Equipe: <p class="info">{{ $equipe->nome }}</p>
                             </h1>
                         </div>
-                        <div class="containerFlexCheck">
+                        <div class="containerFlexCheckEquipeLista">
+                            <h2 class="pecas">Mecânicos da Equipe</h2>
                             <div class="containerCheck">
                                 @foreach ($equipe->nomesMecanicos() as $nomeMecanico)
                                     <div class="containerInfo">
